@@ -231,3 +231,32 @@ function randomizeImgs()
 }
 
 randomizeImgs();
+
+// Select Our Skills Section
+let ourSkills = document.querySelector('.skills');
+
+window.addEventListener('scroll', () =>
+{
+   // Skills Offset Top
+   let skillsOffsetTop = ourSkills.offsetTop;
+
+   // Skills Outer Height 
+   let skillsOuterHeight = ourSkills.offsetHeight;
+
+   // Window Height
+   let windowHeight = window.innerHeight;
+
+   // Window ScrollTop
+   let windowScrollTop = window.scrollY;
+
+   if (windowScrollTop > skillsOffsetTop + (skillsOuterHeight - windowScrollTop))
+   {
+      // Select all skill spans
+      let allSkills = document.querySelectorAll('.skills .skill-progress span');
+
+      allSkills.forEach(skill =>
+      {
+         skill.style.width = skill.dataset.progress;
+      })
+   }
+})
